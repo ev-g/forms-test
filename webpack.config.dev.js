@@ -4,8 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'eval',
   entry: [
-    'webpack-hot-middleware/client',
-    './src/index'
+    'webpack-hot-middleware/client', './src/index'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -13,20 +12,25 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.HotModuleReplacementPlugin(), new webpack.NoErrorsPlugin()
   ],
   module: {
     preLoaders: [
-     {
-       test: /\.js$/,
-       loader: "source-map-loader"
-     }
-   ],
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      include: path.join(__dirname, 'src')
-    }]
+      {
+        test: /\.js$/,
+        loader: "source-map-loader"
+      }
+    ],
+    loaders: [
+      {
+        test: /\.js$/,
+        loaders: ['babel'],
+        include: path.join(__dirname, 'src')
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style', 'css']
+      }
+    ]
   }
 };
