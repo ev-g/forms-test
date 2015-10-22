@@ -15,21 +15,19 @@ export default class Form extends React.Component {
 
   render () {
     const {fields: {name, address, phone}, handleSubmit} = this.props;
+    const renderInput = (input, label) => {
+      return <div className={'form-group' + (input.error && input.touched ? ' has-error' : '')}>
+        <label className="control-label">{label}</label>
+        <input className="form-control" type="text" {...input}/>
+        {input.error && input.touched && <div className="text-danger">{input.error}</div>}
+      </div>
+    }
     return (
       <form onSubmit={handleSubmit}>
-        <label>Name</label>
-        <input type="text" {...name}/>
-        {name.error && name.touched && <div>{name.error}</div>}
-
-        <label>Address</label>
-        <input type="text" {...address}/>
-        {address.error && address.touched && <div>{address.error}</div>}
-
-        <label>Phone</label>
-        <input type="text" {...phone}/>
-        {phone.error && phone.touched && <div>{phone.error}</div>}
-
-        <button onClick={handleSubmit}>Submit</button>
+        {renderInput(name, 'Name')}
+        {renderInput(address, 'Address')}
+        {renderInput(phone, 'Phone')}
+        <button onClick={handleSubmit} type="submit"  className="btn btn-default">Submit</button>
       </form>
     );
   }

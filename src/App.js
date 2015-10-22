@@ -10,7 +10,9 @@ class App extends React.Component {
   render () {
     return <div>
       <h1>Form example</h1>
-      <Form onSubmit={this.handleSubmit.bind(this)} />
+      <div className="col-md-4 col-sm-3 col-lg-3 col-xs-6">
+        <Form onSubmit={this.handleSubmit.bind(this)} />
+      </div>
     </div>
   }
 }

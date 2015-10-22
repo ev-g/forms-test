@@ -3,8 +3,8 @@ export default function (data, props) {
   if(!data.name) {
     errors.name = 'Required';
   }
-  if(data.address && data.address.length > 50) {
-    errors.address = 'Must be fewer than 50 characters';
+  if(data.address && data.address.length > 5) {
+    errors.address = 'Address must be fewer than 5 characters';
   }
   if(!data.phone) {
     errors.phone = 'Required';
