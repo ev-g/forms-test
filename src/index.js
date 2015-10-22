@@ -26,11 +26,21 @@ const store = finalCreateStore(reducer);
 
 ReactDOM.render(
   <Provider store={store} key="provider">
-    <div>
       <App />
-      <DebugPanel top right bottom>
-          <DevTools store={store} monitor={LogMonitor} />
-      </DebugPanel>
-    </div>
   </Provider>,
    document.getElementById('root'));
+
+
+if (__DEVTOOLS__) {
+  ReactDOM.render(
+    <Provider store={store} key="provider">
+      <div>
+        <App />
+        <DebugPanel top right bottom>
+            <DevTools store={store} monitor={LogMonitor} />
+        </DebugPanel>
+      </div>
+    </Provider>,
+     document.getElementById('root'));
+  
+}

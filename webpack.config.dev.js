@@ -12,7 +12,14 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(), new webpack.NoErrorsPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      __CLIENT__: true,
+      __SERVER__: false,
+      __DEVELOPMENT__: true,
+      __DEVTOOLS__: false
+    }),
   ],
   module: {
     preLoaders: [
@@ -26,10 +33,11 @@ module.exports = {
         test: /\.js$/,
         loaders: ['babel'],
         include: path.join(__dirname, 'src')
-      },
-      {
+      }, {
         test: /\.css$/,
-        loaders: ['style', 'css']
+        loaders: [
+          'style', 'css'
+        ]
       }
     ]
   }
