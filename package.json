@@ -16,7 +16,8 @@
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-redux": "^4.0.0",
-    "react-router": "^0.13.4"
+    "react-router": "^0.13.4",
+    "redux-form": "^2.4.5"
   },
   "devDependencies": {
     "babel-core": "^5.8.25",
